@@ -1,165 +1,98 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles, Wrench, Package } from "lucide-react";
+import { ArrowRight, Box, Cog, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-hero">
-      {/* Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-primary/10 blur-3xl"
-        />
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full bg-secondary/10 blur-3xl"
-        />
-        <motion.div
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 right-1/4 w-32 h-32 rounded-2xl bg-accent/20 blur-2xl"
-        />
-      </div>
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      {/* Background Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
+      
+      {/* Gradient Orbs */}
+      <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]" />
+      <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px]" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center lg:text-left"
+            transition={{ duration: 0.5 }}
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
-            >
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">
-                3D Printing op zijn best
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm mb-8">
+              <Zap className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-muted-foreground">
+                Professionele 3D Print Services
               </span>
-            </motion.div>
-
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Van Idee naar{" "}
-              <span className="text-gradient">Werkelijkheid</span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
-              Kant-en-klare 3D-prints of custom ontwerpen op maat. 
-              Van seizoensproducten tot unieke onderdelen - wij printen het voor je!
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link to="/producten">
-                <Button size="lg" className="w-full sm:w-auto shadow-playful group">
-                  Bekijk Producten
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-              <Link to="/custom">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="w-full sm:w-auto border-primary/30 hover:border-primary hover:bg-primary/5"
-                >
-                  <Wrench className="mr-2 w-5 h-5" />
-                  Op Maat Laten Maken
-                </Button>
-              </Link>
-            </div>
-
-            {/* Features */}
-            <div className="grid grid-cols-3 gap-4 mt-12">
-              {[
-                { icon: Package, label: "Kant & Klaar", color: "text-primary" },
-                { icon: Wrench, label: "Op Maat", color: "text-secondary" },
-                { icon: Sparkles, label: "Uniek", color: "text-accent" },
-              ].map((feature, index) => (
-                <motion.div
-                  key={feature.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + index * 0.1 }}
-                  className="flex flex-col items-center gap-2 p-3 rounded-xl bg-card shadow-card"
-                >
-                  <feature.icon className={`w-6 h-6 ${feature.color}`} />
-                  <span className="text-sm font-medium">{feature.label}</span>
-                </motion.div>
-              ))}
             </div>
           </motion.div>
 
-          {/* 3D Visual Placeholder */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative"
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1]"
           >
-            <div className="relative aspect-square max-w-lg mx-auto">
-              {/* Animated background circles */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full border-2 border-dashed border-primary/20"
-              />
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-8 rounded-full border-2 border-dashed border-secondary/20"
-              />
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-16 rounded-full border-2 border-dashed border-accent/20"
-              />
+            Van Concept naar{" "}
+            <span className="text-gradient">Realiteit</span>
+          </motion.h1>
 
-              {/* Central 3D Icon */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div
-                  animate={{ y: [0, -15, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-48 h-48 md:w-64 md:h-64 rounded-3xl bg-gradient-playful shadow-playful flex items-center justify-center"
-                >
-                  <div className="text-center">
-                    <div className="text-6xl md:text-8xl mb-2">🖨️</div>
-                    <p className="text-primary-foreground font-display font-semibold text-lg">
-                      3D Print
-                    </p>
-                  </div>
-                </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto"
+          >
+            Hoogwaardige 3D-printoplossingen voor elke toepassing. 
+            Van standaard producten tot volledig op maat gemaakte onderdelen.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <Link to="/producten">
+              <Button size="lg" className="w-full sm:w-auto group">
+                Bekijk Producten
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link to="/custom">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto"
+              >
+                <Cog className="mr-2 w-4 h-4" />
+                Offerte Aanvragen
+              </Button>
+            </Link>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto"
+          >
+            {[
+              { value: "500+", label: "Projecten" },
+              { value: "98%", label: "Tevreden klanten" },
+              { value: "24u", label: "Levertijd vanaf" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="font-display text-2xl md:text-3xl font-bold text-primary">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-muted-foreground mt-1">
+                  {stat.label}
+                </div>
               </div>
-
-              {/* Floating elements */}
-              <motion.div
-                animate={{ y: [0, -10, 0], rotate: [0, 10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-10 right-10 w-16 h-16 rounded-2xl bg-highlight flex items-center justify-center shadow-lg text-2xl"
-              >
-                ⚙️
-              </motion.div>
-              <motion.div
-                animate={{ y: [0, 10, 0], rotate: [0, -10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-20 left-5 w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center shadow-lg text-2xl"
-              >
-                🔧
-              </motion.div>
-              <motion.div
-                animate={{ y: [0, -8, 0], rotate: [0, 5, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute bottom-10 right-20 w-12 h-12 rounded-2xl bg-success flex items-center justify-center shadow-lg text-xl"
-              >
-                ✨
-              </motion.div>
-            </div>
+            ))}
           </motion.div>
         </div>
       </div>

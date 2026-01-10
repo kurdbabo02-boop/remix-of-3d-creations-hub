@@ -30,8 +30,8 @@
     --muted: 220 15% 94%;
     --muted-foreground: 220 10% 40%;
 
-    /* Goud accent voor luxe */
-    --accent: 38 75% 55%;
+    /* Accent - Cyaan/teal voor technisch gevoel */
+    --accent: 190 80% 45%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 70% 50%;
@@ -76,8 +76,8 @@
     --muted: 220 15% 18%;
     --muted-foreground: 220 10% 60%;
 
-    --accent: 38 75% 55%;
-    --accent-foreground: 220 20% 8%;
+    --accent: 190 80% 45%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;

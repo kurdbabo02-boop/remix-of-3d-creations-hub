@@ -23,11 +23,8 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <img src={logo} alt="FastPrint3D" className="h-10 w-auto" />
-            <span className="font-display text-lg font-semibold hidden sm:block">
-              Fast<span className="text-primary">Print</span>3D
-            </span>
+          <Link to="/" className="flex items-center group">
+            <img src={logo} alt="FastPrint3D" className="h-14 md:h-16 w-auto -my-2" />
           </Link>
 
           {/* Desktop Navigation */}

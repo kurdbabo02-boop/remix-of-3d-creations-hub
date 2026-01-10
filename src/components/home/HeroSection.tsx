@@ -1,12 +1,21 @@
+import { Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Cog } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Center } from "@react-three/drei";
+
+const FloatingCube = () => (
+  <mesh rotation={[0.5, 0.5, 0]}>
+    <boxGeometry args={[2, 2, 2]} />
+    <meshStandardMaterial color="hsl(220, 70%, 25%)" metalness={0.4} roughness={0.3} />
+  </mesh>
+);
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[85vh] flex items-center bg-gradient-hero overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center bg-gradient-hero overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
@@ -33,7 +42,7 @@ const HeroSection = () => {
               className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.1] text-foreground"
             >
               Van Concept naar{" "}
-              <span className="text-gradient">Realiteit</span>
+              <span className="text-primary">Realiteit</span>
             </motion.h1>
 
             <motion.p
@@ -94,20 +103,35 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Hero Image */}
+          {/* 3D Viewer */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative hidden lg:flex items-center justify-center"
+            className="relative hidden lg:block"
           >
-            <div className="relative w-full max-w-md">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl" />
-              <img 
-                src={logo} 
-                alt="FastPrint3D" 
-                className="relative w-full h-auto drop-shadow-2xl"
-              />
+            <div className="aspect-square max-w-md mx-auto rounded-2xl bg-card shadow-elegant overflow-hidden">
+              <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[10, 10, 5]} intensity={1} />
+                <directionalLight position={[-5, 5, -5]} intensity={0.3} />
+                <Suspense fallback={null}>
+                  <Center>
+                    <FloatingCube />
+                  </Center>
+                </Suspense>
+                <OrbitControls 
+                  enableZoom={false} 
+                  enablePan={false}
+                  autoRotate 
+                  autoRotateSpeed={2}
+                />
+              </Canvas>
+              
+              {/* Overlay hint */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-card/90 backdrop-blur-sm text-xs text-muted-foreground">
+                Klik en sleep om te draaien
+              </div>
             </div>
           </motion.div>
         </div>

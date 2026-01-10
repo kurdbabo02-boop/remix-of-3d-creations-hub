@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ShoppingCart, Box } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -20,14 +21,12 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-colors">
-              <Box className="w-5 h-5 text-primary" />
-            </div>
-            <span className="font-display text-lg md:text-xl font-semibold">
-              3D<span className="text-primary">Print</span>Pro
+          <Link to="/" className="flex items-center gap-2 group">
+            <img src={logo} alt="FastPrint3D" className="h-10 w-auto" />
+            <span className="font-display text-lg font-semibold hidden sm:block">
+              Fast<span className="text-primary">Print</span>3D
             </span>
           </Link>
 
@@ -38,9 +37,9 @@ const Navbar = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className={`font-medium transition-all duration-200 ${
+                  className={`font-medium text-sm transition-all duration-200 ${
                     location.pathname === item.path
-                      ? "text-primary bg-primary/10"
+                      ? "text-primary bg-primary/5"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   }`}
                 >
@@ -83,7 +82,7 @@ const Navbar = () => {
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden overflow-hidden border-t border-border"
             >
-              <div className="py-4 space-y-1">
+              <div className="py-3 space-y-1">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.path}
@@ -96,7 +95,7 @@ const Navbar = () => {
                         variant="ghost"
                         className={`w-full justify-start font-medium ${
                           location.pathname === item.path
-                            ? "text-primary bg-primary/10"
+                            ? "text-primary bg-primary/5"
                             : "text-muted-foreground"
                         }`}
                       >

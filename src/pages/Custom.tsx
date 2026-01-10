@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Upload, FileText, MessageSquare, Truck, CheckCircle } from "lucide-react";
+import { Send, Upload, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -15,22 +14,11 @@ import {
 import Layout from "@/components/layout/Layout";
 import { useToast } from "@/hooks/use-toast";
 
-const steps = [
-  {
-    icon: MessageSquare,
-    title: "Beschrijf je project",
-    description: "Deel je specificaties",
-  },
-  {
-    icon: FileText,
-    title: "Ontvang offerte",
-    description: "Binnen 24 uur",
-  },
-  {
-    icon: Truck,
-    title: "Productie & levering",
-    description: "Snelle verzending",
-  },
+const benefits = [
+  "Gratis offerte binnen 24 uur",
+  "Persoonlijk advies van experts",
+  "Hoogwaardige materialen",
+  "Snelle levertijden",
 ];
 
 const CustomPage = () => {
@@ -43,14 +31,12 @@ const CustomPage = () => {
     category: "",
     description: "",
     quantity: "",
-    deadline: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
     
     toast({
@@ -65,106 +51,122 @@ const CustomPage = () => {
       category: "",
       description: "",
       quantity: "",
-      deadline: "",
     });
     setIsSubmitting(false);
   };
 
   return (
     <Layout>
-      <section className="py-12">
+      {/* Hero Section */}
+      <section className="bg-gradient-hero py-16">
         <div className="container mx-auto px-4">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
-          >
-            <h1 className="font-display text-3xl md:text-4xl font-bold mb-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="font-display text-3xl md:text-4xl font-bold mb-4"
+            >
               Op Maat Laten Maken
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Van custom schroeven tot complete prototypes — deel je wensen en ontvang een offerte
-            </p>
-          </motion.div>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-muted-foreground text-lg"
+            >
+              Van custom onderdelen tot complete prototypes — deel je wensen en ontvang een offerte
+            </motion.p>
+          </div>
+        </div>
+      </section>
 
-          {/* Steps */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="grid md:grid-cols-3 gap-6 mb-16 max-w-4xl mx-auto"
-          >
-            {steps.map((step, index) => (
-              <div key={step.title} className="flex items-start gap-4 p-4 rounded-lg bg-card border border-border">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                  <step.icon className="w-5 h-5 text-primary" />
+      {/* Main Content */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
+            {/* Benefits Sidebar */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 }}
+              className="lg:col-span-2"
+            >
+              <div className="sticky top-24">
+                <h2 className="font-display text-xl font-semibold mb-6">
+                  Waarom FastPrint3D?
+                </h2>
+                <div className="space-y-4">
+                  {benefits.map((benefit, index) => (
+                    <div key={benefit} className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                        <CheckCircle className="w-4 h-4 text-primary" />
+                      </div>
+                      <span className="text-muted-foreground">{benefit}</span>
+                    </div>
+                  ))}
                 </div>
-                <div>
-                  <span className="text-xs text-primary font-medium">Stap {index + 1}</span>
-                  <h3 className="font-display font-semibold">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground">{step.description}</p>
+
+                <div className="mt-8 p-6 rounded-xl bg-primary text-primary-foreground">
+                  <h3 className="font-display font-semibold mb-2">
+                    Direct contact?
+                  </h3>
+                  <p className="text-sm text-primary-foreground/70 mb-4">
+                    Bel of mail ons voor een snelle reactie
+                  </p>
+                  <p className="text-sm font-medium">info@fastprint3d.nl</p>
+                  <p className="text-sm font-medium">+31 6 12345678</p>
                 </div>
               </div>
-            ))}
-          </motion.div>
+            </motion.div>
 
-          {/* Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="max-w-2xl mx-auto"
-          >
-            <div className="p-8 rounded-xl bg-card border border-border">
-              <h2 className="font-display text-xl font-semibold mb-6">
-                Offerte Aanvragen
-              </h2>
+            {/* Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="lg:col-span-3"
+            >
+              <div className="bg-card rounded-xl shadow-elegant p-8">
+                <h2 className="font-display text-xl font-semibold mb-2">
+                  Vraag een offerte aan
+                </h2>
+                <p className="text-muted-foreground text-sm mb-8">
+                  Vul het formulier in en we nemen binnen 24 uur contact op
+                </p>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Naam *</Label>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
                     <Input
-                      id="name"
-                      placeholder="Je naam"
+                      placeholder="Naam *"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
+                      className="h-12"
                     />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">E-mail *</Label>
                     <Input
-                      id="email"
                       type="email"
-                      placeholder="je@email.nl"
+                      placeholder="E-mail *"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
+                      className="h-12"
                     />
                   </div>
-                </div>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Telefoonnummer</Label>
+                  <div className="grid md:grid-cols-2 gap-4">
                     <Input
-                      id="phone"
                       type="tel"
-                      placeholder="+31 6 12345678"
+                      placeholder="Telefoonnummer"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="h-12"
                     />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="category">Categorie *</Label>
                     <Select
                       value={formData.category}
                       onValueChange={(value) => setFormData({ ...formData, category: value })}
                     >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Selecteer categorie" />
+                      <SelectTrigger className="h-12">
+                        <SelectValue placeholder="Categorie *" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="schroeven">Custom Schroeven & Bevestigingen</SelectItem>
@@ -176,65 +178,47 @@ const CustomPage = () => {
                       </SelectContent>
                     </Select>
                   </div>
-                </div>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="quantity">Aantal (schatting)</Label>
-                    <Input
-                      id="quantity"
-                      placeholder="Bijv. 10, 50, 100+"
-                      value={formData.quantity}
-                      onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="deadline">Gewenste leverdatum</Label>
-                    <Input
-                      id="deadline"
-                      type="date"
-                      value={formData.deadline}
-                      onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
-                    />
-                  </div>
-                </div>
+                  <Input
+                    placeholder="Geschat aantal stuks"
+                    value={formData.quantity}
+                    onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
+                    className="h-12"
+                  />
 
-                <div className="space-y-2">
-                  <Label htmlFor="description">Projectomschrijving *</Label>
                   <Textarea
-                    id="description"
-                    placeholder="Beschrijf je project zo gedetailleerd mogelijk. Denk aan afmetingen, materiaal, kleur, functie, etc."
+                    placeholder="Beschrijf je project zo gedetailleerd mogelijk. Denk aan afmetingen, materiaal, kleur, functie, etc. *"
                     rows={5}
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     required
                   />
-                </div>
 
-                {/* File Upload Placeholder */}
-                <div className="border-2 border-dashed border-border rounded-lg p-6 text-center">
-                  <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-                  <p className="text-sm text-muted-foreground">
-                    3D-bestand uploaden (STL, OBJ, GLTF)
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Binnenkort beschikbaar
-                  </p>
-                </div>
+                  {/* File Upload */}
+                  <div className="border border-dashed border-border rounded-lg p-6 text-center hover:border-primary/50 transition-colors cursor-pointer">
+                    <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
+                    <p className="text-sm text-muted-foreground">
+                      Sleep je 3D-bestand hierheen of klik om te uploaden
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      STL, OBJ, GLTF • Binnenkort beschikbaar
+                    </p>
+                  </div>
 
-                <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    <>Verzenden...</>
-                  ) : (
-                    <>
-                      Offerte Aanvragen
-                      <Send className="ml-2 w-4 h-4" />
-                    </>
-                  )}
-                </Button>
-              </form>
-            </div>
-          </motion.div>
+                  <Button type="submit" size="lg" className="w-full group" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      "Verzenden..."
+                    ) : (
+                      <>
+                        Offerte Aanvragen
+                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
     </Layout>

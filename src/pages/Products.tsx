@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ShoppingCart, Eye, Box, Filter, Search } from "lucide-react";
+import { ShoppingCart, Eye, Box, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -35,22 +35,32 @@ const ProductsPage = () => {
 
   return (
     <Layout>
+      {/* Hero Section */}
+      <section className="bg-gradient-hero py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="font-display text-3xl md:text-4xl font-bold mb-4"
+            >
+              Producten
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-muted-foreground text-lg"
+            >
+              Ontdek ons complete assortiment van 3D-geprinte producten
+            </motion.p>
+          </div>
+        </div>
+      </section>
+
+      {/* Filters & Products */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-12"
-          >
-            <h1 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Producten
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl">
-              Ontdek ons complete assortiment van 3D-geprinte producten
-            </p>
-          </motion.div>
-
           {/* Filters */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -64,7 +74,7 @@ const ProductsPage = () => {
                 placeholder="Zoek producten..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
+                className="pl-10 h-11"
               />
             </div>
             <div className="flex gap-2 flex-wrap">
@@ -88,12 +98,12 @@ const ProductsPage = () => {
                 key={product.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
+                transition={{ delay: index * 0.03 }}
                 className="group"
               >
-                <div className="h-full rounded-lg bg-card border border-border overflow-hidden hover:border-primary/50 transition-all duration-300">
+                <div className="h-full rounded-xl bg-card shadow-card overflow-hidden hover:shadow-elegant transition-all duration-300">
                   <div className="relative aspect-square bg-muted flex items-center justify-center">
-                    <Box className="w-16 h-16 text-muted-foreground/30" />
+                    <Box className="w-16 h-16 text-muted-foreground/20" />
                     {product.badge && (
                       <Badge
                         variant={product.price ? "default" : "secondary"}
@@ -143,7 +153,7 @@ const ProductsPage = () => {
 
           {filteredProducts.length === 0 && (
             <div className="text-center py-16">
-              <Box className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
+              <Box className="w-16 h-16 text-muted-foreground/20 mx-auto mb-4" />
               <p className="text-muted-foreground">Geen producten gevonden</p>
             </div>
           )}

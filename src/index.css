@@ -2,101 +2,101 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Professional & Business Design System voor 3D Print Shop - Light Theme */
+/* Professional & Luxe Design System voor FastPrint3D */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* Professionele, strakke lichte palette */
-    --background: 0 0% 100%;
-    --foreground: 220 15% 15%;
+    /* Luxe professionele palette - Licht met warmte */
+    --background: 220 20% 97%;
+    --foreground: 220 20% 10%;
 
-    --card: 0 0% 99%;
-    --card-foreground: 220 15% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 15%;
+    --popover-foreground: 220 20% 10%;
 
-    /* Zakelijk blauw als primary */
-    --primary: 210 100% 45%;
+    /* Premium donkerblauw als primary */
+    --primary: 220 70% 20%;
     --primary-foreground: 0 0% 100%;
 
-    /* Neutraal grijs als secondary */
-    --secondary: 220 10% 94%;
-    --secondary-foreground: 220 15% 25%;
+    /* Warm grijs als secondary */
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 20% 25%;
 
-    /* Subtiele muted */
-    --muted: 220 15% 96%;
-    --muted-foreground: 220 10% 45%;
+    /* Subtiele muted met warmte */
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 10% 40%;
 
-    /* Accent - Cyaan voor technisch gevoel */
-    --accent: 190 90% 45%;
+    /* Goud accent voor luxe */
+    --accent: 38 75% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
 
     /* Success */
-    --success: 150 70% 40%;
+    --success: 150 60% 35%;
     --success-foreground: 0 0% 100%;
 
-    --border: 220 15% 90%;
-    --input: 220 15% 90%;
-    --ring: 210 100% 45%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 220 70% 20%;
 
-    --radius: 0.5rem;
+    --radius: 0.375rem;
 
-    --sidebar-background: 0 0% 99%;
-    --sidebar-foreground: 220 15% 15%;
-    --sidebar-primary: 210 100% 45%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 20% 10%;
+    --sidebar-primary: 220 70% 20%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 15% 96%;
-    --sidebar-accent-foreground: 220 15% 15%;
-    --sidebar-border: 220 15% 90%;
-    --sidebar-ring: 210 100% 45%;
+    --sidebar-accent: 220 15% 94%;
+    --sidebar-accent-foreground: 220 20% 10%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 220 70% 20%;
   }
 
   .dark {
-    --background: 220 15% 8%;
+    --background: 220 20% 8%;
     --foreground: 0 0% 95%;
 
-    --card: 220 15% 12%;
+    --card: 220 20% 12%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 220 15% 12%;
+    --popover: 220 20% 12%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 210 100% 55%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 38 75% 55%;
+    --primary-foreground: 220 20% 8%;
 
-    --secondary: 220 10% 25%;
+    --secondary: 220 15% 20%;
     --secondary-foreground: 0 0% 95%;
 
     --muted: 220 15% 18%;
     --muted-foreground: 220 10% 60%;
 
-    --accent: 190 90% 50%;
-    --accent-foreground: 220 15% 8%;
+    --accent: 38 75% 55%;
+    --accent-foreground: 220 20% 8%;
 
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --success: 150 70% 45%;
+    --success: 150 60% 40%;
     --success-foreground: 0 0% 100%;
 
     --border: 220 15% 20%;
     --input: 220 15% 20%;
-    --ring: 210 100% 55%;
+    --ring: 38 75% 55%;
 
-    --sidebar-background: 220 15% 10%;
+    --sidebar-background: 220 20% 10%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 210 100% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 38 75% 55%;
+    --sidebar-primary-foreground: 220 20% 8%;
     --sidebar-accent: 220 15% 18%;
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 210 100% 55%;
+    --sidebar-ring: 38 75% 55%;
   }
 }
 
@@ -128,9 +128,9 @@
 
   .bg-gradient-subtle {
     background-image: linear-gradient(
-      135deg,
+      180deg,
       hsl(var(--background)),
-      hsl(var(--muted))
+      hsl(220 20% 94%)
     );
   }
 
@@ -138,28 +138,43 @@
     background-image: linear-gradient(
       145deg,
       hsl(var(--card)),
-      hsl(var(--muted))
+      hsl(220 15% 98%)
+    );
+  }
+
+  .bg-gradient-hero {
+    background-image: linear-gradient(
+      135deg,
+      hsl(220 20% 96%) 0%,
+      hsl(220 25% 92%) 50%,
+      hsl(220 20% 96%) 100%
     );
   }
 
   .shadow-professional {
     box-shadow: 
-      0 4px 20px -5px hsl(var(--primary) / 0.1),
-      0 8px 40px -10px hsl(0 0% 0% / 0.08);
+      0 4px 20px -5px hsl(var(--primary) / 0.08),
+      0 8px 40px -10px hsl(0 0% 0% / 0.06);
   }
 
   .shadow-card {
     box-shadow: 
-      0 1px 3px hsl(0 0% 0% / 0.05),
-      0 4px 12px hsl(0 0% 0% / 0.05);
+      0 1px 2px hsl(0 0% 0% / 0.04),
+      0 4px 16px hsl(0 0% 0% / 0.04);
   }
 
-  .border-glow {
+  .shadow-elegant {
+    box-shadow: 
+      0 2px 8px hsl(0 0% 0% / 0.04),
+      0 8px 24px hsl(0 0% 0% / 0.06),
+      0 16px 48px hsl(0 0% 0% / 0.04);
+  }
+
+  .border-subtle {
     border: 1px solid hsl(var(--border));
-    box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.05);
   }
 
   .glass {
-    @apply bg-background/80 backdrop-blur-xl border-b border-border;
+    @apply bg-card/95 backdrop-blur-xl border-b border-border shadow-sm;
   }
 }

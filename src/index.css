@@ -2,59 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Professional & Business Design System voor 3D Print Shop */
+/* Professional & Business Design System voor 3D Print Shop - Light Theme */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* Professionele, strakke palette - Donker thema */
-    --background: 220 15% 8%;
-    --foreground: 0 0% 95%;
+    /* Professionele, strakke lichte palette */
+    --background: 0 0% 100%;
+    --foreground: 220 15% 15%;
 
-    --card: 220 15% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 99%;
+    --card-foreground: 220 15% 15%;
 
-    --popover: 220 15% 12%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 15%;
 
     /* Zakelijk blauw als primary */
-    --primary: 210 100% 55%;
+    --primary: 210 100% 45%;
     --primary-foreground: 0 0% 100%;
 
     /* Neutraal grijs als secondary */
-    --secondary: 220 10% 25%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 220 10% 94%;
+    --secondary-foreground: 220 15% 25%;
 
     /* Subtiele muted */
-    --muted: 220 15% 18%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 10% 45%;
 
     /* Accent - Cyaan voor technisch gevoel */
-    --accent: 190 90% 50%;
-    --accent-foreground: 220 15% 8%;
+    --accent: 190 90% 45%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
 
     /* Success */
-    --success: 150 70% 45%;
+    --success: 150 70% 40%;
     --success-foreground: 0 0% 100%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 210 100% 55%;
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 210 100% 45%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 220 15% 10%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 210 100% 55%;
+    --sidebar-background: 0 0% 99%;
+    --sidebar-foreground: 220 15% 15%;
+    --sidebar-primary: 210 100% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 15% 18%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 210 100% 55%;
+    --sidebar-accent: 220 15% 96%;
+    --sidebar-accent-foreground: 220 15% 15%;
+    --sidebar-border: 220 15% 90%;
+    --sidebar-ring: 210 100% 45%;
   }
 
   .dark {
@@ -144,22 +144,22 @@
 
   .shadow-professional {
     box-shadow: 
-      0 4px 20px -5px hsl(var(--primary) / 0.15),
-      0 8px 40px -10px hsl(0 0% 0% / 0.3);
+      0 4px 20px -5px hsl(var(--primary) / 0.1),
+      0 8px 40px -10px hsl(0 0% 0% / 0.08);
   }
 
   .shadow-card {
     box-shadow: 
-      0 1px 3px hsl(0 0% 0% / 0.2),
-      0 4px 12px hsl(0 0% 0% / 0.15);
+      0 1px 3px hsl(0 0% 0% / 0.05),
+      0 4px 12px hsl(0 0% 0% / 0.05);
   }
 
   .border-glow {
     border: 1px solid hsl(var(--border));
-    box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.1);
+    box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.05);
   }
 
   .glass {
-    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+    @apply bg-background/80 backdrop-blur-xl border-b border-border;
   }
 }

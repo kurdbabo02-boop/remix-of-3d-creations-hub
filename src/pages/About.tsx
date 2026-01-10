@@ -1,28 +1,13 @@
 import { motion } from "framer-motion";
-import { Box, Target, Users, Award, Zap, CheckCircle } from "lucide-react";
+import { Target, Users, Award, Zap, CheckCircle } from "lucide-react";
 import Layout from "@/components/layout/Layout";
+import logo from "@/assets/logo.png";
 
 const values = [
-  {
-    icon: Target,
-    title: "Precisie",
-    description: "Elk product wordt met de hoogste nauwkeurigheid geprint.",
-  },
-  {
-    icon: Zap,
-    title: "Snelheid",
-    description: "Van ontwerp naar product in de kortst mogelijke tijd.",
-  },
-  {
-    icon: Users,
-    title: "Samenwerking",
-    description: "We werken nauw samen met klanten voor het beste resultaat.",
-  },
-  {
-    icon: Award,
-    title: "Kwaliteit",
-    description: "Alleen de beste materialen en technieken.",
-  },
+  { icon: Target, title: "Precisie", description: "Hoogste nauwkeurigheid" },
+  { icon: Zap, title: "Snelheid", description: "Korte levertijden" },
+  { icon: Users, title: "Samenwerking", description: "Persoonlijk contact" },
+  { icon: Award, title: "Kwaliteit", description: "Premium materialen" },
 ];
 
 const features = [
@@ -37,32 +22,39 @@ const features = [
 const AboutPage = () => {
   return (
     <Layout>
-      <section className="py-12">
+      {/* Hero Section */}
+      <section className="bg-gradient-hero py-16">
         <div className="container mx-auto px-4">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
-          >
-            <h1 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Over 3DPrintPro
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Wij zijn gespecialiseerd in hoogwaardige 3D-printoplossingen voor 
-              bedrijven en particulieren
-            </p>
-          </motion.div>
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="font-display text-3xl md:text-4xl font-bold mb-4"
+            >
+              Over FastPrint3D
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-muted-foreground text-lg"
+            >
+              Gespecialiseerd in hoogwaardige 3D-printoplossingen voor bedrijven en particulieren
+            </motion.p>
+          </div>
+        </div>
+      </section>
 
-          {/* Story Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="grid lg:grid-cols-2 gap-12 items-center mb-24"
-          >
-            <div>
-              <h2 className="font-display text-2xl md:text-3xl font-bold mb-6">
+      {/* Story Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 }}
+            >
+              <h2 className="font-display text-2xl font-bold mb-6">
                 Van Passie naar Professie
               </h2>
               <div className="space-y-4 text-muted-foreground">
@@ -80,55 +72,53 @@ const AboutPage = () => {
                   we producten die aan de hoogste standaarden voldoen.
                 </p>
               </div>
-            </div>
+            </motion.div>
             
-            <div className="relative">
-              <div className="aspect-square rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 border border-border flex items-center justify-center">
-                <Box className="w-24 h-24 text-primary/30" />
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="relative"
+            >
+              <div className="bg-card rounded-2xl shadow-elegant p-8 flex items-center justify-center">
+                <img src={logo} alt="FastPrint3D" className="w-full max-w-xs h-auto" />
               </div>
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-xl -z-10" />
-              <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-accent/10 rounded-xl -z-10" />
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
-          {/* Values */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mb-24"
-          >
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-center mb-12">
-              Onze Kernwaarden
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {values.map((value, index) => (
-                <motion.div
-                  key={value.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
-                  className="p-6 rounded-lg bg-card border border-border text-center"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <value.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-display font-semibold mb-2">{value.title}</h3>
-                  <p className="text-sm text-muted-foreground">{value.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+      {/* Values */}
+      <section className="py-16 bg-gradient-hero">
+        <div className="container mx-auto px-4">
+          <h2 className="font-display text-2xl font-bold text-center mb-12">
+            Onze Kernwaarden
+          </h2>
+          <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {values.map((value, index) => (
+              <motion.div
+                key={value.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 + index * 0.05 }}
+                className="text-center"
+              >
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <value.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-display font-semibold mb-1">{value.title}</h3>
+                <p className="text-sm text-muted-foreground">{value.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          {/* Features */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="max-w-3xl mx-auto"
-          >
-            <div className="p-8 rounded-xl bg-card border border-border">
+      {/* Features */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-card rounded-xl shadow-elegant p-8">
               <h2 className="font-display text-xl font-semibold mb-6 text-center">
                 Wat Wij Bieden
               </h2>
@@ -141,7 +131,7 @@ const AboutPage = () => {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </Layout>

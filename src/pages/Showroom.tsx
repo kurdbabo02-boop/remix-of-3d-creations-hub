@@ -16,7 +16,7 @@ const DemoBox = () => (
 const DemoSphere = () => (
   <mesh>
     <sphereGeometry args={[1.2, 64, 64]} />
-    <meshStandardMaterial color="hsl(38, 75%, 55%)" metalness={0.5} roughness={0.2} />
+    <meshStandardMaterial color="hsl(190, 80%, 45%)" metalness={0.5} roughness={0.2} />
   </mesh>
 );
 
@@ -30,7 +30,7 @@ const DemoCylinder = () => (
 const DemoTorus = () => (
   <mesh rotation={[Math.PI / 4, 0, 0]}>
     <torusGeometry args={[1, 0.4, 32, 64]} />
-    <meshStandardMaterial color="hsl(38, 75%, 55%)" metalness={0.6} roughness={0.2} />
+    <meshStandardMaterial color="hsl(190, 80%, 45%)" metalness={0.6} roughness={0.2} />
   </mesh>
 );
 

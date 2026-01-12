@@ -1,17 +1,18 @@
-import { Suspense } from "react";
+import { Suspense, forwardRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Cog } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Center } from "@react-three/drei";
+import * as THREE from "three";
 
-const FloatingCube = () => (
-  <mesh rotation={[0.5, 0.5, 0]}>
+const FloatingCube = forwardRef<THREE.Mesh>((_, ref) => (
+  <mesh ref={ref} rotation={[0.5, 0.5, 0]}>
     <boxGeometry args={[2, 2, 2]} />
     <meshStandardMaterial color="hsl(220, 70%, 25%)" metalness={0.4} roughness={0.3} />
   </mesh>
-);
+));
 
 const HeroSection = () => {
   return (
